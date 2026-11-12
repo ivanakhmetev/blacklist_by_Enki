@@ -17,13 +17,25 @@ jobs:
           import csv
           with open("add_ignore.csv", encoding="utf-8") as f:
               rows = list(csv.reader(f))
-          nicks = [r[0].strip() for r in rows[1:] if r and r[0].strip()]
-          with open("SYNC.txt", "w", encoding="utf-8") as out:
-              out.write("/run for _,n in ipairs({" + ",".join(f"\"{n}\"" for n in nicks) + "}) do AddIgnore(n) end")
+          
+          horde, alliance = [], []
+          for r in rows[1:]:
+              if not r or not r[0].strip(): continue
+              nick = r[0].strip()
+              row_text = ",".join(r).lower()
+              if "horde" in row_text or "орда" in row_text:
+                  if nick not in horde: horde.append(nick)
+              elif "alliance" in row_text or "альянс" in row_text:
+                  if nick not in alliance: alliance.append(nick)
+
+          with open("SYNC_HORDE.txt", "w", encoding="utf-8") as f:
+              f.write("/run for _,n in ipairs({" + ",".join(f"\"{n}\"" for n in horde[-50:]) + "}) do AddIgnore(n) end")
+          with open("SYNC_ALLIANCE.txt", "w", encoding="utf-8") as f:
+              f.write("/run for _,n in ipairs({" + ",".join(f"\"{n}\"" for n in alliance[-50:]) + "}) do AddIgnore(n) end")
           '
       - run: |
           git config user.name "Bot"
           git config user.email "bot@github.com"
-          git add SYNC.txt
+          git add SYNC_HORDE.txt SYNC_ALLIANCE.txt
           git diff --staged --quiet || git commit -m "Sync update"
           git push
