@@ -1,0 +1,1 @@
+/run for _,n in ipairs({"ВторойНик","Oreshnikman"}) do AddIgnore(n) end
