@@ -6,7 +6,7 @@
 ---
 
 ## 📋 Quick Navigation / Навигация
-* 📂 **[Open Players List / Открыть список игроков (`players.csv`)](./add_ignore.csv)**
+* 📂 **[Open Players List / Открыть список игроков (`add_ignore.csv`)](./add_ignore.csv)**
 
 ---
 
