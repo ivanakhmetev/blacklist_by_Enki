@@ -1,54 +1,46 @@
-# 🛡️ Last Heaven — Community Blacklist (`blacklist_by_n'ke)
+# 🛡️ Last Heaven — Общий черный список (`blacklist_by_n-ke`)
 
-> **[EN]** Public registry of toxic and unsportsmanlike players on the **Last Heaven** WoW server (Alliance & Horde).  
-> **[RU]** Открытый реестр токсичных и недобросовестных игроков WoW-сервера **Last Heaven** (Альянс и Орда).
-
----
-
-## 📋 Quick Navigation / Навигация
-* 📂 **[Open Players List / Открыть список игроков (`add_ignore.csv`)](./add_ignore.csv)**
+Открытая база недобросовестных игроков сервера **Last Heaven** (Альянс и Орда).  
+Здесь собираются ливеры, ниндзя-лутеры и токсики. Скрипт в репозитории сам обновляет готовые команды для быстрого добавления всех нарушителей в ваш игровой `/ignore`.
 
 ---
 
-## 🇬🇧 English Guide
+## ⚡ Как закинуть всех себе в черный список в игре (за 5 секунд)
 
-An open community list of Alliance and Horde players reported for unsportsmanlike behavior (leaving M+ keys, ninja-looting, harassment, etc.).
+В игре есть лимит на черный список — **максимум 50 человек**. Скрипт автоматически собирает 50 самых свежих нарушителей для вашей фракции в одну строку.
 
-### How to Report a Player
-1. Open the [`add_ignore.csv`](./add_ignore.csv) file and click the **pencil icon (Edit this file)** in the top right corner.
-2. Add a new line at the very bottom following this exact structure:
+1. Откройте файл для вашей фракции:
+   * 🔴 **[Команда для ОРДЫ (`SYNC_HORDE.txt`)](./SYNC_HORDE.txt)**
+   * 🔵 **[Команда для АЛЬЯНСА (`SYNC_ALLIANCE.txt`)](./SYNC_ALLIANCE.txt)**
+2. Нажмите кнопку **Copy** (значок двух квадратиков в правом верхнем углу текста).
+3. Зайдите в WoW, откройте чат (`Enter`), вставьте скопированный текст (`Ctrl + V`) и снова нажмите `Enter`.
+
+**Готово!** Все свежие нарушители из базы автоматически улетели к вам в `/ignore` (те, кто уже там был, не продублируются).
+
+---
+
+## 📝 Как добавить нарушителя в общий список (запулить репорт)
+
+Если вы встретили токсика и хотите добавить его в общую базу:
+
+1. Откройте таблицу **[`add_ignore.csv`](./add_ignore.csv)** и нажмите на **значок карандаша** (Edit this file) в правом верхнем углу.
+2. Перейдите в самый низ списка и добавьте новую строчку строго по шаблону:
    ```text
-   Nickname,Realm,Faction,Reason,Reporter,Date,Proof_Link
+   Ник,Сервер,Фракция,Причина,ВашНик,Дата,СсылкаНаСкриншот
    ```
-3. Click **Commit changes...** to submit a Pull Request for review.
+3. Нажмите зеленую кнопку **Commit changes...**, а затем **Propose changes** / **Create pull request**.
 
-### Rules & Guidelines
-* **Proof is required:** Reports without screenshots, videos, or combat logs may be rejected.
-* **Keep it factual:** Describe the incident objectively without insults or hate speech.
-* **Accurate data:** Double-check the player's nickname, faction (`Alliance` or `Horde`), and date (`YYYY-MM-DD`).
+После проверки модератором ник появится в общей таблице, а робот через 10 секунд сам обновит команды для вставки в игру.
 
 ---
 
-## 🇷🇺 Русская инструкция
+### 📌 Правила и пример записи
 
-Открытый реестр игроков Орды и Альянса сервера **Last Heaven**, замеченных в неспортивном поведении (ливы из ключей, ниндзя-лутинг, оскорбления и т.д.).
+* **Фракцию** пишите строго как `Horde` или `Alliance` (иначе скрипт не поймет, в какой файл закинуть ник).
+* **Пруфы:** желательно прикладывать ссылку на скриншот (например, через Imgur), иначе заявку могут отклонить.
+* **Без мата:** описывайте причину кратко и по факту.
 
-### Как добавить игрока
-1. Откройте файл [`add_ignore.csv`](./add_ignore.csv) и нажмите на **значок карандаша (Edit this file)** в правом верхнем углу.
-2. Добавьте новую строку в самом низу строго по формату:
-   ```text
-   Ник,Сервер,Фракция,Причина,Кто_сообщил,Дата,Ссылка_на_пруф
-   ```
-3. Нажмите **Commit changes...**, чтобы отправить заявку на проверку (Pull Request).
-
-### Правила ведения списка
-* **Желательно пруфы:** Записи без скриншотов, видео или логов могут быть отклонены.
-* **Только факты:** Описывайте причину сухо и объективно, без ответных оскорблений.
-* **Точность данных:** Проверяйте правильность написания ника, фракции (`Alliance` или `Horde`) и даты (`ГГГГ-ММ-ДД`).
-
----
-
-### 💡 Example Entry / Пример записи
+**Пример правильной строки:**
 ```csv
-Arthas,Last Heaven,Alliance,Left M+ key after first wipe,Thrall,2026-11-12,https://imgur.com
+Arthas,Last Heaven,Alliance,Ливнул после первого вайпа,Thrall,2026-11-12,https://imgur.com
 ```
